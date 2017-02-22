@@ -33,7 +33,7 @@ names(totyear)<-c("Year", "City", "Emission")
 
 ##Draw a chart with points and lines
 png("plot6.png", width=640, height=480)
-ggplot(data = totyear, aes(x=Year, y=Emission, group=City, color=City))+geom_line()+ggtitle('Total Emissions from Motor Vehicle sources from 1999 to 2008')+ylab(expression('PM'[2.5]*" Emissions"))
+ggplot(data = totyear, aes(x=Year, y=Emission, group=City, color=City))+geom_line(size=2)+stat_smooth(method = "lm", linetype=2)+ggtitle('Total Emissions from Motor Vehicle sources from 1999 to 2008')+ylab(expression('PM'[2.5]*" Emissions"))
 dev.off()
 
 
