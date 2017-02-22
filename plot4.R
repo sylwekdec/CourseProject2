@@ -18,11 +18,11 @@ SCC <- readRDS("Source_Classification_Code.rds")
 ## Merge NEI with SCC
 
 data<- merge(NEI, SCC, by="SCC")
-data1<-data[grep("Coal", data$Short.Name),]
+data1<-data[grep("Coal", data$Short.Name,ignore.case=TRUE),]
 
 
 #aggregate total pollution by year and type
-totyear <- aggregate(Emissions~year, data=data, FUN=sum)
+totyear <- aggregate(Emissions~year, data=data1, FUN=sum)
 
 #Column Names
 names(totyear)<-c("Year", "Emission")

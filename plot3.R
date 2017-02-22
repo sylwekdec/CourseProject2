@@ -17,10 +17,10 @@ SCC <- readRDS("Source_Classification_Code.rds")
 
 ## subset of data for Baltimore, fips == "24510"
 baltData <- subset(NEI, fips=="24510")
-data<-subset(baltData, type==c("POINT","NONPOINT", "ON-ROAD" , "NON-ROAD"))
 
 #aggregate total pollution by year and type
-totyear <- aggregate(Emissions~year+type, data=data, FUN=sum)
+totyear <- aggregate(Emissions~year*type, data=baltData, FUN=sum)
+
 
 #Column Names
 names(totyear)<-c("Year", "Type", "PM25_Emission")
